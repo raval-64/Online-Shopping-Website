@@ -1,0 +1,98 @@
+{% extends 'osm/base.html' %}
+{% block body %}
+    {% load static %}
+         <div class="slideshow-container">
+	        <div class="mySlides fade">
+  	            <img src="{% static 'osm/images/01.jpg' %}" class="slide_show">
+	    </div>
+	    <div class="mySlides fade">
+  	    <img src="{% static 'osm/images/02.jpg' %}" class="slide_show">
+ 	</div>
+	<div class="mySlides fade">
+  	    <img src="{% static 'osm/images/03.jpg' %}" class="slide_show">
+	</div>
+	<div class="slide-btn">
+		<button type="button" class="prev-bt slide-style-bt"><i class="fa fa-angle-left"></i></button>
+		<button type="button" class="next-bt slide-style-bt"><i class="fa fa-angle-right"></i></button>
+	</div>
+</div>
+<br>
+ <div class="p_slider_container">
+	<div class="p_slider_container_inner">
+	<div class="slide_title">
+		<div class="slide_title_in">Mobiles</div>
+	</div>
+	<div class="prev_slide" id="prev">
+	<button type="button" class="bt_p_slide" id="prev_bt"><i class="icon left"></i></button>
+	</div>
+	<div id="p_slider">
+		<ul id="p_slides">
+            {% for pro in product_type.product_set.all %}
+                <a href="{% url 'osm:product_detail' pro.product_type_id pro.product_name %}" style="text-decoration: none;color: black;">
+			    <li class="p_slide">
+				    <table border="0" class="tbl_info_produ">
+					    <tr>
+                            {% for pg in pro.product_gallery_set.all|slice:":1" %}
+						    <td class="td_img"><img src="{{ pg.gallery_name.url }}" class="l_img_con" align="center"></td>
+                            {% endfor %}
+					    </tr>
+					    <tr>
+						    <td align="center" class="pr_title_con">{{ pro.product_name }}</td>
+					    </tr>
+					    <tr>
+						    <td align="center" class="pr_price_con"> Rs.{{ pro.product_price }}</td>
+					    </tr>
+				    </table>
+			    </li>
+                </a>
+            {% endfor %}
+        </ul>
+	</div>
+	<div class="next_slide" id="next">
+		 <button type="button" class="bt_p_slide" id="next_bt"><i class="icon right"></i></button>
+ </div>
+</div>
+</div>
+    <br><br>
+<div class="p_slider_container">
+	<div class="p_slider_container_inner" >
+	
+	<div id="p_slider" style="height:230px; width:inherit;">
+		<ul id="p_slides">
+			<li class="p_slide" style="padding:10px;">
+				 <a href="osm/lg/" style="text-decoration: none;color: black;">
+				<img src="{% static 'osm/images/br001.png' %}" style="width:99%;height:80%;">
+				</a>
+			</li>
+			<li class="p_slide" style="padding:10px;">
+				<a href="osm/apple/" style="text-decoration: none;color: black;">
+				<img src="{% static 'osm/images/br01.png' %}" style="width:99%;height:80%;">
+				</a>
+			</li>
+			<li class="p_slide" style="padding:10px;">
+				<a href="osm/samsung/" style="text-decoration: none;color: black;">
+				<img src="{% static 'osm/images/br002.png' %}" style="width:99%;height:80%;">
+				</a>
+			</li>
+			<li class="p_slide" style="padding:10px;">
+				<a href="osm/lenovo/" style="text-decoration: none;color: black;">
+				<img src="{% static 'osm/images/br04.png' %}" style="width:99%;height:80%;">
+				</a>
+			</li>
+			<li class="p_slide" style="padding:10px;">
+				<a href="osm/mi/" style="text-decoration: none;color: black;">
+				<img src="{% static 'osm/images/br05.png' %}" style="width:99%;height:80%;">
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>
+</div>
+
+<br>
+
+<br>
+{% endblock %}
+
+
+
