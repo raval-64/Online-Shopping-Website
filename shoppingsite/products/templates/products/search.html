@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block body %}
+    {% load static %}
+<br>
+<div class="header-container prodlist_no">
+	<div class="prod-search-title">
+		<span style="font-size:14px; text-align:left;text-transform:capitalize;">{{ request.path }}</span>
+			<span style="float:right;">
+				<select style="border:1px solid rgba(0,0,0,0.12);padding-left: 3px;padding-right: 3px;padding: 2px;outline:none;">
+					<option value="Default">Default</option>
+					<option>Price Low To high</option>
+					<option>Price High To Low</option>
+				</select>
+		</span>
+		<div style="text-align:center;padding:3px;font-family:sans-serif;text-transform:capitalize;">{{ product_type.product_type_name }}</div>
+	</div>
+	<div class="hr-line" style="background-color: rgba(0,0,0,0.05);"></div>
+		{% if product_type.all %}
+        <ul class="prod-contain-ul">
+            {% for pro in product_type.all %}
+                <a href="{% url 'products:product_detail' pro.product_type_id pro.product_name %}" style="text-decoration: none;color: black;">
+                <li class="prod-contain-li">
+                    <table border="0" class="tbl_info_produ_list">
+					    <tr>
+                            {% for pg in pro.product_gallery_set.all|slice:":1" %}
+                            <td class="td_img" colspan="2"><img src="{{ pg.gallery_name.url }}" class="l_img_con" align="center"></td>
+                            {% endfor %}
+                        </tr>
+                        <tr>
+                            <td align="center" class="pr_title_con" colspan="2">{{ pro.product_name }}</td>
+                        </tr>
+                        <tr>
+                            <td align="center" class="pr_price_con" colspan="2"> Rs. {{ pro.product_price|floatformat:'2' }}</td>
+                        </tr>
+                        <tr>
+                            {% if pro.product_quantity == 0 %}
+                                <td class="pr_title_con" align="center"><button type="button" class="prod_contain_bt" style="background-color:orange;color:white;">Out Of Stock</button></td>
+                            {% else %}
+                                <td class="pr_title_con"><a href="{% url 'cart:link_cart' pro.product_name %}" style="text-decoration: none;color: black;"><button type="button" class="prod_contain_bt"> Add to Cart</button></a></td>
+                                <td class="pr_title_con"><a href="{% url 'order:order_address' pro.product_name %}" style="text-decoration: none;color: black;"><button type="button" class="prod_contain_bt">Buy now</button></a></td>
+                            {% endif %}
+                        </tr>
+                    </table>
+                </li>
+                </a>
+            {% endfor %}
+        </ul>
+        {% else %}
+                <div style="margin-left:auto;margin-right:auto;width:500px;padding-top:35px;"><img src="{% static 'images/no-product-found.jpg' %}" align="center"></div>
+        {% endif %}
+</div>
+<br>
+{% endblock %}

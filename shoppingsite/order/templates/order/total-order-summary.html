@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block body %}
+    {% load static %}
+<br>
+
+<div class="header-container prodlist_no1">
+	<div class="main-cart">
+		<div class="cart-contain-ctn" style="width:100%;">
+			<div class="cart-header-ctn">My Orders List</div>
+			{% for order in orders %}
+			<div class="cart-info-ctn">
+				<div class="main-cart-box">
+					<table class="summary-report">
+						<tr clas	s="tr-report">
+							<td class="td-report" style="width:38%;">Product Name : {{ order.order_product_id.product_name }}</td>
+							<td class="td-report" style="text-transform:capitalize;">Name : {{ order.order_address_id.name }}</td>
+							<td class="td-report">Order ID : 000{{ order.pk }}</td>
+						</tr>
+						<tr class="tr-report">
+							<td class="td-report" style="text-transform:capitalize;">Type : {{ order.order_product_id.product_type_id }}</td>
+							<td class="td-report">Mobile No : {{ order.order_address_id.mobile_no }}</td>
+							<td class="td-report">Order Date : {{ order.order_info_id.order_date }}</td>
+						</tr>
+						<tr class="tr-report">
+							<td class="td-report">Seller : {{ order.order_product_id.seller_id }}</td>
+							<td class="td-report" style="width:37%;">Address : {{ order.order_address_id.address }}</td>
+							<td class="td-report">Delivery Date : {{ order.order_info_id.order_delivery_date }}</td>
+						</tr>
+						<tr class="tr-report">
+							<td class="td-report">Price : Rs. {{ order.order_product_id.product_price|floatformat:'2' }}</td>
+							<td class="td-report">City : {{ order.order_address_id.city }}</td>
+							<td class="td-report">Order Quantity : {{ order.order_info_id.order_quantity }}</td>
+						</tr>
+						<tr class="tr-report">
+							<td class="td-report">Payment Method : 
+							{% if order.order_info_id.order_payment_method == 'cod' %}
+								Cash on Delivery
+							{% endif %}
+						</td>
+							<td class="td-report">State : {{ order.order_address_id.state }}</td>
+							<td class="td-report">Total Payment : Rs. {{ order.order_info_id.order_total_payment|floatformat:'2' }}</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+
+			<div class="cart-header-ctn">
+				<a href="{% url 'products:index' %}">
+				<button type="button" class="shop-bt" >Continue Shopping</button>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+<br>
+{% endblock %}

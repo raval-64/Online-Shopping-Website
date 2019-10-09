@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{% block title %}Online Shopping Mall{% endblock %}</title>{% load static %}
+<link href="{% static 'css/main.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/fontawesome.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/media.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/short.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/font.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'fonts/style.css' %}" rel="stylesheet" type="text/css">
+<script src="{% static 'js/jquery.min.js' %}" type="text/javascript"></script>
+</head>
+<body>
+<div class="main-header">
+	<div class="header">
+    <div class="header-container">
+    	<div class="left-header">
+        <div class="header-image">
+          <img src="{% static 'images/01.png' %}" class="left-header-logo" alt="online-shop-logo">
+        </div>
+        <div class="header-font">Online Shopping Mall</div>
+      </div>
+      <div class="middle-header">
+        <input type="search" autofocus class="box-a" placeholder="Product Search........" autocomplete="on" />
+        <button type="submit" class="btn"><span class="icon-search"></span></button>
+			</div>
+      <ul class="right-header">
+        <li class="btn2"><i class="fa fa-shopping-cart"></i> Cart</li>
+          <a href="{% url 'auth:login_user' %}"><li class="btn2" id="mid2"><i class="fa fa-user"></i> Sign In </li></a>
+        <li class="btn2" id="mid">More <i class="font-st1 fa fa-caret-down"></i>
+            <ul class="drp-click">
+                <li style="padding:0; margin-top:-8px;margin-left:50px;"><div class="arrow-up"></div></li>
+                <li class="drp">Sell Products</li>
+                <li class="drp">Contact us</li>
+                <li class="drp">Feedback</li>
+                <li class="drp">About us</li>
+            </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="menu-container">
+		<ul class="ul-cls">
+		{% for pro_cat in product_category %}
+			<li class="li-data"><a href="#" class="lin" >{{ pro_cat }}<i class="font-st fa fa-caret-down"></i></a>
+ 				<ul class="lower">
+ 					<li class="lower-in">
+						<ul class="row">
+							{% if pro_cat.product_type_set.count > no %}
+								<li class="gd main-box">
+									<ul class="ul-cl">
+										{% for types in pro_cat.product_type_set.all|slice:"0:5" %}
+											<li class="ver-data"><a href="{% url 'products:product_list' pro_cat types %}" class="cl">{{ types }}</a></li>
+										{% endfor %}
+									</ul>
+								</li>
+								<li class="gd main-box2">
+									<ul class="ul-cl">
+										{% for types in pro_cat.product_type_set.all|slice:"5:10" %}
+											<li class="ver-data"><a href="{% url 'products:product_list' pro_cat types %}" class="cl">{{ types }}</a></li>
+										{% endfor %}
+									</ul>
+								</li>
+								<li class="gd main-box">
+									<ul class="ul-cl">
+										{% for types in pro_cat.product_type_set.all|slice:"10:15" %}
+											<li class="ver-data"><a href="{% url 'products:product_list' pro_cat types %}" class="cl">{{ types }}</a></li>
+										{% endfor %}
+									</ul>
+								</li>
+							{% else %}
+								<li class="gd main-box">
+									<ul class="ul-cl">
+										{% for types in pro_cat.product_type_set.all|slice:"0:5" %}
+											<li class="ver-data"><a href="{% url 'products:product_list' pro_cat types %}" class="cl">{{ types }}</a></li>
+										{% endfor %}
+									</ul>
+								</li>
+								<li class="gd main-box2">
+									<ul class="ul-cl">
+										{% for types in pro_cat.product_type_set.all|slice:"5:10" %}
+											<li class="ver-data"><a href="{% url 'products:product_list' pro_cat types %}" class="cl">{{ types }}</a></li>
+										{% endfor %}
+									</ul>
+								</li>
+							{% endif %}				
+						</ul>
+					</li>
+				</ul>
+			</li>
+		{% endfor %}
+		</ul>	
+	</div>
+</div>
+{% block body %}
+{% endblock %}
+<br>
+<br>
+<div class="main-header-btm" style="background: white;">
+	<div class="header-btm header-container">
+		<div class="btm-align"></div>
+		<div class="btm-align-right">Terms of Use</div>
+		<div class="btm-align-right">Privacy Policy</div>
+	</div>
+</div>
+
+<script src="{% static 'js/main-js.js' %}" type="text/javascript"></script>
+<script>
+$(document).ready(function(){
+    $("#mid").click(function(){
+
+        $(".drp-click").toggle();
+        $(".drp-click1").css({'display':'none'});
+    });
+    $("#mid2").click(function(){
+        $(".drp-click1").toggle();
+         $(".drp-click").css({'display':'none'});
+    });
+
+});
+$(window).scroll(function(){
+		 if ($(this).scrollTop() > 135) {
+ 		 		$('.menu-container').css({'display':'none'});
+				 $('.main-header').addClass('fixed');
+		 } else {
+			 	$('.menu-container').css({'display':'block'});
+				 $('.main-header').removeClass('fixed');
+		 }
+ });
+$(document).mouseup(function (event)
+{
+    var container = $("#mid");
+    var container1 = $("#mid2");
+
+    if (!container.is(event.target) && container.has(event.target).length === 0)
+    {
+        $(".drp-click").css({'display':'none'});
+    }
+    if (!container1.is(event.target) && container1.has(event.target).length === 0)
+    {
+        $(".drp-click1").css({'display':'none'});
+    }
+});
+</script>
+    </body>
+</html>

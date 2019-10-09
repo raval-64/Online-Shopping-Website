@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block body %}
+    {% load static %}
+<br>
+<div class="header-container prodlist_no" style="background-color:transparent;box-shadow:none!important;">
+<div class="pay-form-size">
+	<div class="order-form">
+		<div class="order-form-title">Payment Method</div>
+		<div class="order-form-table" style="padding-top:3px;">
+			<form method="POST" role="form" action="" enctype="multipart/form-data">
+				{% csrf_token %}
+				<table class="pay-form-tbl">
+					<tr class="tr-pay">
+						<td class="td-pay"><label class="container">Net Banking<input type="radio" value="netbank" name="pay"><span class="checkmark"></span></label></td>
+					</tr>
+					<tr class="tr-pay">
+						<td class="td-pay"><label class="container">Debit Card/Credit Card<input type="radio" value="cre_deb" name="pay"><span class="checkmark"></span></label></td>
+					</tr>
+					<tr class="tr-pay">
+						<td class="td-pay"><label class="container">Cash On Delivery<input type="radio" value="cod" name="pay"><span class="checkmark"></span></label></td>
+					</tr>
+					<tr class="tr-pay">
+						<td class="td-pay" align="center" style="border-bottom:none;padding-top:25px;"><input type="submit" class="pay-bt" value="Continue"></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+</div>
+</div>
+<br>
+{% endblock %}

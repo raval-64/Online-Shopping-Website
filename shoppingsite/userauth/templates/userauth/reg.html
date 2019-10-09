@@ -1,0 +1,33 @@
+{% extends 'userauth/login_reg_base.html' %}
+{% block body %}
+    {% load static %}
+<br>
+<br>
+<div class="log-container">
+	<div class="log-inner">
+					<br>
+						<div class="la-cl"><div class="mini-lab">Registraion for Online Shopping Mall</div>
+						<div class="left-align"></div></div>
+						<form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                                {% for field in u_form %}
+                                    <div class="left-align">{{ field.errors }}</div>
+                                    {{ field }}
+                                {% endfor %}
+                                {% for field in m_form %}
+                                    <div class="left-align">{{ field.errors }}</div>
+                                    {{ field }}
+                                {% endfor %}
+                            <input type="submit" name="Login" class="log-bt" value="Register">
+                        </form>
+					<br>
+<div class="right-align"><a href="#" style="color: #535766;text-decoration:none;">Forget Password ?</a></div>
+<br>
+<hr size="1">
+<br>
+<a href="{% url 'userauth:login_user'%}" style="text-decoration: none;color: white;"><button type="button" name="Login" class="log-bt">Login</button></a>
+</div>
+</div>
+	<br>
+	<br>
+{% endblock %}

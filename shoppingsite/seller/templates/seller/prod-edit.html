@@ -1,0 +1,207 @@
+{% extends 'seller-view.html' %}
+{% block body %}
+    {% load static %}
+			<div class="main-content">
+				<div class="main-content-inner">
+					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+						<ul class="breadcrumb">
+							<li>
+								<i class="ace-icon fa fa-home home-icon"></i>
+								<a href="#">Home</a>
+							</li>
+							<li class="active">Edit Product</li>
+						</ul>
+					</div>
+
+					<div class="page-content">
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+								<div class="page-header">
+								<h1>
+									Products
+									<small>
+									<i class="ace-icon fa fa-angle-double-right"></i>
+										Edit Product Details
+									</small>
+								</h1>
+								</div>
+
+								<form method="post" action="editsub" name="" class="form-horizontal" role="form">
+								
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Prouduct Id: </label>
+
+										<div class="col-sm-9">
+										<input type="text" id="form-field-1" placeholder="Product id" class="col-xs-10 col-sm-5" name="productid" value="">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Product Name: </label>
+
+										<div class="col-sm-9">
+											<input type="text" id="form-field-1" placeholder="Product Name" class="col-xs-10 col-sm-5" name="productname" value="">
+										</div>
+									</div>	
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Product Category: </label>
+
+										<div class="col-sm-9">
+											<select name="category" class="f-input i-course" onchange="demo(this.value)" id="cid" required>
+		                                        <option selected="true" disabled="disabled" value="">Choose Category</option><option value=''></option><br>
+		                                    </select>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Product Type: </label>
+
+										<div class="col-sm-9">
+											<select name="type" class="f-input i-course" onchange="demo(this.value)" id="cid" required>
+		                                        <option selected="true" disabled="disabled" value="">Choose Type</option><option value=''></option><br>
+		                                       
+		                                    </select>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Product Brand: </label>
+
+										<div class="col-sm-9">
+											<select name="brand" class="f-input i-course" onchange="demo(this.value)" id="cid" required>
+		                                        <option selected="true" disabled="disabled" value="">Choose Brand</option><option value=''></option><br>
+		                                       
+		                                    </select>
+										</div>
+									</div>	
+										<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Product Quantity: </label>
+
+										<div class="col-sm-9">
+											<input type="number" id="form-field-1" placeholder="0" class="col-xs-10 col-sm-5" style="width: 125px;" name="quantity" value="">
+										</div>
+									</div>	
+										
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Product Price: </label>
+
+										<div class="col-sm-9">
+											<input type="number" id="form-field-1" placeholder="Price" class="col-xs-10 col-sm-5" style="width: 125px;" name="price" value="">
+										</div>
+									</div>	
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Images Upload: </label>
+										<div class="col-sm-9">
+											<table style="width:20%;padding: 0px;" >
+											  <tr>
+											    <td>
+											     <div class="input-file-row-1">
+											            <div class="upload-file-container">
+											                <img id="preview_image" src="#" alt="" />
+											                <div class="upload-file-container-text">
+											                    <div class = 'one_opacity_0'>
+											                        <input type="file" id="patient_pic" label = "add" />
+											                    </div>
+											                    <span class="des"> Add Photo </span>
+											                </div>
+											            </div>
+											        </div>
+											       </td>
+											    <td>
+											        <div class="input-file-row-1">
+											            <div class="upload-file-container">
+											                <img id="preview_image1" src="#" alt="" />
+											                <div class="upload-file-container-text">
+											                    <div class = 'one_opacity_0'>
+											                        <input type="file" id="patient_pic1" label = "add" />
+											                    </div>
+											                    <span class="des"> Add Photo </span>
+											                </div>
+											            </div>
+											        </div>
+											        
+											    </td> 
+											    <td>
+											         <div class="input-file-row-1">
+											            <div class="upload-file-container">
+											                <img id="preview_image2" src="#" alt="" />
+											                <div class="upload-file-container-text">
+											                    <div class = 'one_opacity_0'>
+											                        <input type="file" id="patient_pic2" label = "add" />
+											                    </div>
+											                    <span class="des"> Add Photo </span>
+											                </div>
+											            </div>
+											        </div>
+											        
+											    </td>
+											  </tr>
+											  <tr>
+											    <td>
+											        <div class="input-file-row-1">
+											            <div class="upload-file-container">
+											                <img id="preview_image3" src="#" alt="" />
+											                <div class="upload-file-container-text">
+											                    <div class = 'one_opacity_0'>
+											                        <input type="file" id="patient_pic3" label = "add" />
+											                    </div>
+											                    <span class="des"> Add Photo </span>
+											                </div>
+											            </div>
+											        </div>
+											        
+											    </td>
+											    <td>
+											        <div class="input-file-row-1">
+											            <div class="upload-file-container">
+											                <img id="preview_image4" src="#" alt="" />
+											                <div class="upload-file-container-text">
+											                    <div class = 'one_opacity_0'>
+											                        <input type="file" id="patient_pic4" label = "add" />
+											                    </div>
+											                    <span class="des"> Add Photo </span>
+											                </div>
+											            </div>
+											        </div>
+											    
+											    </td>
+											    <td>
+											            <div class="input-file-row-1">
+											            <div class="upload-file-container">
+											                <img id="preview_image5" src="#" alt="" />
+											                <div class="upload-file-container-text">
+											                    <div class = 'one_opacity_0'>
+											                        <input type="file" id="patient_pic5" label = "add" />
+											                    </div>
+											                    <span class="des"> Add Photo </span>
+											                </div>
+											            </div>
+											        </div>
+											    
+											    </td>
+											  </tr>
+											</table>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Product Detail: </label>
+
+										<div class="col-sm-9" style="overflow-x: auto;">
+											<textarea rows="10" cols="70" id="form-field-1"  placeholder="Product Description" name="desp" ></textarea>
+										</div>
+									</div>	
+
+										<div class="col-md-offset-3 col-md-9">
+											<button class="btn btn-info" type="submit">
+												<i class="ace-icon fa fa-check bigger-110"></i>
+												Change
+											</button>
+										</div>
+										</form>
+
+								<!-- PAGE CONTENT ENDS -->
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</div><!-- /.page-content -->
+				</div>
+			</div><!-- /.main-content -->
+{% endblock %}

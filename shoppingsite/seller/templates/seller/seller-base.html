@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta charset="utf-8" />
+		<title>>{% block title %}Orders View{% endblock %}</title>
+
+		<meta name="description" content="" />{% load static %}
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- bootstrap & fontawesome -->
+        <link rel="stylesheet" href="{% static 'css/upload.css' %}"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+		<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+		<link rel="stylesheet" href="{% static 'font-awesome/4.5.0/css/font-awesome.min.css' %}" />
+
+		<!-- page specific plugin styles -->
+
+		<!-- text fonts -->
+		<link rel="stylesheet" href="{% static 'css/fonts.googleapis.com.css' %}" />
+
+		<!-- ace styles -->
+		<link rel="stylesheet" href="{% static 'css/ace.min.css' %}" class="ace-main-stylesheet" id="main-ace-style" />
+
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" href="assets/css/ace-part2.min.css" class="ace-main-stylesheet" />
+		<![endif]-->
+		<link rel="stylesheet" href="{% static 'css/ace-skins.min.css' %}" />
+		<link rel="stylesheet" href="{% static 'css/ace-rtl.min.css' %}" />
+
+		<!--[if lte IE 9]>
+		  <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
+		<![endif]-->
+
+		<!-- inline styles related to this page -->
+
+		<!-- ace settings handler -->
+		<script src="{% static 'js/ace-extra.min.js' %}"></script>
+        <script type="text/javascript">
+            function readURL(input, target) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                var image_target = $(target);
+                reader.onload = function (e) {
+                    image_target.attr('src', e.target.result).show();
+                };
+                reader.readAsDataURL(input.files[0]);
+             }
+         }
+        
+        $("#patient_pic").live("change",function(){
+            readURL(this, "#preview_image")});
+        $("#patient_pic1").live("change",function(){
+            readURL(this, "#preview_image1")});
+        $("#patient_pic2").live("change",function(){
+            readURL(this, "#preview_image2")});
+        $("#patient_pic3").live("change",function(){
+            readURL(this, "#preview_image3")});
+        $("#patient_pic4").live("change",function(){
+            readURL(this, "#preview_image4")});
+        $("#patient_pic5").live("change",function(){
+            readURL(this, "#preview_image5")
+            
+    
+        });
+            </script>
+    
+		<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
+
+		<!--[if lte IE 8]>
+		<script src="assets/js/html5shiv.min.js"></script>
+		<script src="assets/js/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body class="no-skin">
+		<div id="navbar" class="navbar navbar-default ace-save-state">
+			<div class="navbar-container ace-save-state" id="navbar-container">
+				<button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
+					<span class="sr-only">Toggle sidebar</span>
+
+					<span class="icon-bar"></span>
+
+					<span class="icon-bar"></span>
+
+					<span class="icon-bar"></span>
+				</button>
+
+				<div class="navbar-header pull-left">
+					<a href="" class="navbar-brand">
+						<small>
+							<i class="fa fa-shopping-cart"></i>
+							&nbsp;OSM Seller
+ 						</small>
+					</a>
+				</div>
+
+				<div class="navbar-buttons navbar-header pull-right" role="navigation">
+					<ul class="nav ace-nav">
+						<li class="light-blue dropdown-modal" style="float: right!important;">
+							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
+								<img class="nav-user-photo" src="{% static 'images/avatars/user.jpeg' %}" alt="User Photo" />
+								<span class="user-info">
+									<small>Welcome,</small>
+									anonymous
+								</span>
+
+								<i class="ace-icon fa fa-caret-down"></i>
+							</a>
+
+							<ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close" style="padding: 10px;">
+								<li>           
+                                        <!-- Logout Form -->  
+                                        <form action="${pageContext.request.contextPath}/logout_1" method="post" >
+                                            <i class="ace-icon fa fa-power-off login-symbol"></i>
+                                            <input type="submit" value="Logout" class="login1" style="border: none;background-color: #ffffff;" >
+
+                                        </form>
+                                        <!-- /Logout Form -->
+                                </li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div><!-- /.navbar-container -->
+		</div>
+
+		<div class="main-container ace-save-state" id="main-container">
+			<script type="text/javascript">
+				try{ace.settings.loadState('main-container')}catch(e){}
+			</script>
+
+			<div id="sidebar" class="sidebar responsive ace-save-state">
+				<script type="text/javascript">
+					try{ace.settings.loadState('sidebar')}catch(e){}
+				</script>
+
+				<div class="sidebar-shortcuts" id="sidebar-shortcuts">
+					
+
+					<div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+						<span class="btn btn-success"></span>
+
+						<span class="btn btn-info"></span>
+
+						<span class="btn btn-warning"></span>
+
+						<span class="btn btn-danger"></span>
+					</div>
+				</div><!-- /.sidebar-shortcuts -->
+
+				<ul class="nav nav-list">
+					<li class="">
+						<a href="dashboard.jsp">
+							<i class="menu-icon fa fa-tachometer"></i>
+							<span class="menu-text"> Dashboard </span>
+						</a>
+
+						<b class="arrow"></b>
+					</li>
+
+					<li class="">
+						<a href="staff.jsp" class="">
+							<i class="menu-icon fa fa-shopping-bag"></i>
+							<span class="menu-text">
+								Products
+							</span>
+						</a>
+
+					</li>
+
+					<li class="">
+						<a href="subject.jsp" class="">
+							<i class="menu-icon fa fa-cart-plus"></i>
+							<span class="menu-text">
+								Orders
+							</span>
+						</a>
+					</li>
+					
+				</ul><!-- /.nav-list -->
+
+				<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+					<i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+				</div>
+            </div>
+{% block body %}
+{% endblock %}
+
+    <div class="footer">
+        <div class="footer-inner">
+            <div class="footer-content">
+                <span class="bigger-120">
+                    <span class="blue bolder">OSM</span>
+                    Application &copy; 2018-2019
+                </span>
+                &nbsp; &nbsp;
+            </div>
+        </div>
+    </div>
+
+    <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+        <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+    </a>
+</div><!-- /.main-container -->
+
+<!-- basic scripts -->
+
+<!--[if !IE]> -->
+<script src="{% static 'js/jquery-2.1.4.min.js' %}"></script>
+
+<!-- <![endif]-->
+
+<!--[if IE]>
+<script src="assets/js/jquery-1.11.3.min.js"></script>
+<![endif]-->
+<script type="text/javascript">
+    if('ontouchstart' in document.documentElement) document.write("<script src='{% static 'js/jquery.mobile.custom.min.js'%}'>"+"<"+"/script>");
+</script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+<!-- page specific plugin scripts -->
+
+<!-- ace scripts -->
+<script src="{% static 'js/ace-elements.min.js' %}" ></script>
+<script src="{% static 'js/ace.min.js' %}"></script>
+
+<!-- inline scripts related to this page -->
+</body>
+</html>

@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% block body %}
+    {% load static %}
+<br>
+<div class="header-container prodlist_no2">
+	{% if cart %}
+	<div class="main-cart">
+		<div class="cart-contain-ctn" style="background-color: white;box-shadow:0 2px 4px 0 rgba(0,0,0,0.16),0 2px 3px 0 rgba(0,0,0,0.12)!important;">
+			<div class="cart-header-ctn">My Cart</div>
+			<div class="cart-info-ctn">
+				{% for carts in cart %}
+					<div class="main-cart-box">
+						<table border="0" style="width:100%;">
+							<tr>
+								<td>
+									<div class="cart-in">
+										<div class="cart-in-img">
+											{% for pg in carts.cart_product_id.product_gallery_set.all|slice:":1" %}
+											<img src="{{ pg.gallery_name.url }}" class="cart-in-img-cl">
+											{% endfor %}
+										</div>
+									</div>
+								</td>
+								<td>
+									<div class="cart-in">
+										<div class="cart-in-title" style="padding-bottom:6px;">
+											{{ carts.cart_product_id.product_name }}
+										</div>
+										<div class="cart-in-mrp" style="padding-top:0;">
+											<span class="dark-font">
+												{{ carts.cart_product_id.product_type_id }}
+											</span>
+										</div>
+										<div class="cart-in-resller">
+											<span class="dark-font">Seller :
+											</span> 
+											{{ carts.cart_product_id.seller_id }}
+										</div>
+										<div class="cart-in-mrp">
+											<span class="dark-font">Price :</span>
+										 	Rs.{{ carts.cart_product_id.product_price|floatformat:'2' }}
+										</div>
+									</div>
+								</td>
+								<td>
+									<ul class="cart-in" style="list-style-type: none;padding: 0;margin: 0;">
+										<li class="cart-in-qt"style="float: left!important;" >
+                                        <form role="form" action="{% url 'cart:plus_minus' carts.cart_product_id.product_name %}" method="post" enctype="multipart/form-data">
+                                        	{% csrf_token %}
+											<button type="submit" class="cart-in-bt" style="margin: 2px;" name="plus">+</button>
+											<input type="text" value="{{ carts.cart_quantity }}" name="qun" id='id1' style="width:15%;padding: 5px;float:left;margin-top: 2px;"readonly>
+                                        	<button type="submit" class="cart-in-bt" style="margin: 2px;" name="minus">-</button>
+                                        </form>
+										</li>
+										<li class="cart-in-rmv" style="float: right!important;">
+											<a href="{% url 'cart:cart_remove' carts.cart_product_id.product_name %}" style="text-decoration: none;color: black;">
+												<button type="button" class="rmv-bt-edit">Remove</button>
+											</a>
+										<li/>
+									</ul>
+								</td>
+							</tr>
+						</table>
+					</div>
+				{% endfor %}
+				</div>
+				<div class="cart-header-ctn">
+					<a href="{% url 'products:index' %}"><button type="button" class="shop-bt" >Continue Shopping</button></a>
+					<a href="{% url 'cart:cart_order' %}"><button type="button" class="shop-bt">Buy Now</button></a>
+				</div>
+			</div>
+	</div>
+	<div class="cart-price-ctn">
+		<div class="cart-header-ctn">
+				Price & Items
+		</div>
+		<div class="cart-info-price">
+			<table class="price-tbl">
+				<tr>
+					<td>Item</td>
+					<td align="right">{{ cart_con }}</td>
+				</tr>
+				<tr>
+					<td>Price</td>
+					<td align="right">Rs.{{ cart_price }}</td>
+				</tr>
+				<tr>
+					<td>Shipping Charge</td>
+					<td align="right"> - </td>
+				</tr>
+				<tr>
+					<td colspan="2" style="border-bottom:1px solid #878787;height:5px;border-bottom-style:dotted;"></td>
+				</tr>
+
+				<tr class="item-ship-price">
+					<td>Total Payment</td>
+					<td align="right">{{ cart_price }}</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+{% else %}
+	<div class="main-cart" style="height:480px;">
+		
+			<div class="cart-header-ctn">My Cart</div>
+				<div class="cart-info-ctn" style="width:300px;margin-left:auto;margin-right:auto;">
+					<div class="main-cart-box" style="border:none;">
+						<img src="{% static 'images/empty-cart_ee6141.png' %}" style="width:300px;">
+						<h2 align="center">Your Cart is Empty</h2>
+					</div>
+				</div>
+				<div class="cart-header-ctn">
+					<a href="{% url 'products:index' %}">
+					<button type="button" class="shop-bt" >Continue Shopping</button>
+					</a>
+				</div>
+			</div>	
+{% endif %}
+</div>
+<br>
+{% endblock %}

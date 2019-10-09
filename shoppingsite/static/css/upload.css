@@ -1,0 +1,126 @@
+.input-file-row-1:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+
+.input-file-row-1{
+    display: inline-block;
+	margin-top: 25px;
+	position: relative;
+}
+
+#preview_image {
+  display: none;
+  width: 90px;
+  height: 90px;
+  margin: 2px 0px 0px 5px;
+  border-radius: 10px;
+}
+#preview_images {
+  display: block;
+  width: 90px;
+  height: 90px;
+  margin: 2px 0px 0px 5px;
+  border-radius: 10px;
+}
+#preview_image1 {
+  display: none;
+  width: 90px;
+  height: 90px;
+  margin: 2px 0px 0px 5px;
+  border-radius: 10px;
+}
+#preview_image2 {
+  display: none;
+  width: 90px;
+  height: 90px;
+  margin: 2px 0px 0px 5px;
+  border-radius: 10px;
+}
+#preview_image3 {
+  display: none;
+  width: 90px;
+  height: 90px;
+  margin: 2px 0px 0px 5px;
+  border-radius: 10px;
+}
+#preview_image4 {
+  display: none;
+  width: 90px;
+  height: 90px;
+  margin: 2px 0px 0px 5px;
+  border-radius: 10px;
+}
+#preview_image5 {
+  display: none;
+  width: 90px;
+  height: 90px;
+  margin: 2px 0px 0px 5px;
+  border-radius: 10px;
+}
+
+.upload-file-container { 
+	position: relative; 
+	width: 100px; 
+	height: 137px; 
+	overflow: hidden;	
+	background: url(http://i.imgur.com/AeUEdJb.png) top center no-repeat;
+	float: left;
+	margin-left: 23px;
+} 
+
+.upload-file-container-text{
+	font-family: Arial, sans-serif;
+	font-size: 12px;
+	color: #719d2b;
+	line-height: 17px;
+	text-align: center;
+	display: block;
+	position: absolute; 
+	left: 0; 
+	bottom: 0; 
+	width: 100px; 
+	height: 35px;
+}
+
+.upload-file-container-text > span{
+	cursor: pointer;
+}
+
+.one_opacity_0 {
+  opacity: 0;
+  height: 0;
+  width: 1px;
+  float: left;
+
+}
+.des
+{
+	padding: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	border-radius: 5px;
+	color:#8a8888;
+	background-color: #fafafa;
+	border : 2px solid rgba(0,0,0,0.10);
+	text-decoration: none;
+}
+@media (max-width: 1024px) {
+  .wid
+  {
+    float: none!important;
+    margin-left: none!important;
+    margin-right: none!important;
+    margin-top: 5px!important;
+
+  }
+  .wid2
+  {
+
+  }
+  /* CSS that should be displayed if width is equal to or less than 800px goes here */
+}

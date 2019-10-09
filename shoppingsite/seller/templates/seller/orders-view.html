@@ -1,0 +1,95 @@
+{% extends 'seller-view.html' %}
+{% block body %}
+    {% load static %}
+			<div class="main-content">
+				<div class="main-content-inner">
+					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+						<ul class="breadcrumb">
+							<li>
+								<i class="ace-icon fa fa-home home-icon"></i>
+								<a href="#">Home</a>
+							</li>
+
+							
+							<li class="active">Orders</li>
+						</ul>
+					</div>
+
+					<div class="page-content">
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+											<div class="page-header">
+												<h1>
+													Products
+													<small>
+														<i class="ace-icon fa fa-angle-double-right"></i>
+														Details From Database
+													</small>
+												</h1>
+											</div>
+											<br>
+												
+											<div class="row" style="overflow-x:auto;">
+												<div class="col-xs-12">
+													<!--GetCourseFileContent-->
+													<table id='simple-table' class='table  table-bordered table-hover'>
+															<thead>
+															<tr>
+																<th>Order ID</th>
+																<th>Order Date</th>
+																<th>Username</th>
+																<th>Mobile No.</th>
+																<th>City</th>
+																<th>States</th>
+																<th>Order Product Name</th>
+																<th>Order Product Type</th>
+																<th>Order Quantity</th>
+																<th>Excepted Delivery Date</th>
+																<th>Price</th>
+																	<th>Delete</th>
+															</tr>
+															</thead>
+																
+																
+															<!--//display and edit course details-->
+															<form action='editcourse.jsp' method='post'>
+															<tbody>
+															<tr>
+															<input type='hidden' id='cid' name='cid' value='"+cid[n]+"'>
+															<input type='hidden' id='course' name='course' value='"+course[n]+"'>
+															<td style='width:8%;'>1</td>
+															<td style='width:8%; '>13/05/2019</td>
+															<td style='width:8%; '>bhavesh13</td>
+															<td style='width:8%; '>9099448970</td>
+															<td style='width:8%; '>Deesa</td>
+															<td style='width:8%; '>Gujarat</td>
+															<td style='width:20%; '>Samsung j8 Mobile Phone</td>
+															<td style='width:10%; '>Mobiles</td>
+															<td style='width:8%; '>2</td>
+															
+															<td style='width:13%; '>23/05/2019</td>
+															<td style='width:10%'>20000</td>
+																<!--	//delete course content-->
+															<td style='width:10%'>
+															<form action='deletecourse' method='post'>
+															<input type='hidden' id='cid' name='cid' value='"+cid[n]+"'>
+															<button class='btn btn-xs btn-danger' type='submit'>
+															<i class='ace-icon fa fa-trash-o bigger-120'></i>
+															</button>
+															</form>
+															</div>
+															</td>
+															</tr>
+															</tbody>	
+																                                                 
+													</table>
+												</div><!-- /.span -->
+								</div><!-- /.row -->
+								<!-- PAGE CONTENT ENDS -->
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</div><!-- /.page-content -->
+				</div>
+			</div><!-- /.main-content -->
+	{% endblock %}

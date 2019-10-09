@@ -1,0 +1,200 @@
+{% extends 'seller-view.html' %}
+{% block body %}
+    {% load static %}
+			<div class="main-content">
+				<div class="main-content-inner">
+					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+						<ul class="breadcrumb">
+							<li>
+								<i class="ace-icon fa fa-home home-icon"></i>
+								<a href="#">Home</a>
+							</li>
+
+							
+							<li class="active">Proudct Detail</li>
+						</ul>
+					</div>
+					<div class="page-content">
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+								<div class="page-header">
+								<h1>
+									Products
+									<small>
+									<i class="ace-icon fa fa-angle-double-right"></i>
+										View Product Details
+									</small>
+								</h1>
+								</div>
+
+								<form method="post" action="editsub" name="" class="form-horizontal" role="form">
+								
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Prouduct Id: </label>
+
+										<div class="col-sm-9">
+										<input type="text" style="color: #737375!important;background-color: white!important;border:none;" id="form-field-1" class="col-xs-10 col-sm-5" value="1" disabled>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Product Name: </label>
+
+										<div class="col-sm-9">
+											<input type="text" id="form-field-1" style="color:#737375!important;background-color: white!important;border:none;"class="col-xs-10 col-sm-5" value="Samsung j8 64GB Mobile" disabled>
+										</div>
+									</div>	
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Product Category: </label>
+
+										<div class="col-sm-9">
+											<input type="text" id="form-field-1" style="color: #737375	!important;background-color: white!important;border:none;" class="col-xs-10 col-sm-5" value="Electronic" disabled>
+										
+											</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Product Type: </label>
+										<div class="col-sm-9">
+											<input type="text" id="form-field-1" style="color:#737375!important;background-color: white!important;border:none;"class="col-xs-10 col-sm-5" value="Mobile" disabled>
+										</div>
+
+									</div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Product Brand: </label>
+										<div class="col-sm-9">
+											<input type="text" id="form-field-1" style="color:#737375!important;background-color: white!important;border:none;"class="col-xs-10 col-sm-5" value="Samsung" disabled>
+										</div>
+
+									</div>	
+										<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Product Quantity: </label>
+
+										<div class="col-sm-9">
+											<input type="text" id="form-field-1" style="color:#737375!important;background-color: white!important;border:none;"class="col-xs-10 col-sm-5" value="1" disabled>
+										</div>
+									</div>	
+										
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Product Price: </label>
+										<div class="col-sm-9">
+											<input type="text" id="form-field-1" style="color:#737375!important;background-color: white!important;border:none;"class="col-xs-10 col-sm-5" value="20000" disabled>
+										</div>
+									</div>	
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Product Images: </label>
+										<div class="col-sm-9">
+											<table style="width:20%;padding: 0px;" >
+											  <tr>
+											    <td>
+											    	<div class="input-file-row-1">
+											            <div class="upload-file-container">
+											                <img id="preview_images" src="/home/anon/Pictures/45294504.jpeg" alt="" />
+											             </div>  
+											        </div>
+											      </td>
+											    <td>
+											        <div class="input-file-row-1">
+											            <div class="upload-file-container">
+											                <img id="preview_images" src="#" alt="" />
+											             </div>  
+											        </div>
+											        
+											    </td> 
+											    <td>
+											        <div class="input-file-row-1">
+											            <div class="upload-file-container">
+											                <img id="preview_images" src="#" alt="" />
+											             </div>  
+											        </div>
+											    </td>
+											  </tr>
+											  <tr>
+											    <td>
+											      <div class="input-file-row-1">
+											            <div class="upload-file-container">
+											                <img id="preview_images" src="#" alt="" />
+											             </div>  
+											        </div>  
+											    </td>
+											    <td>
+											        <div class="input-file-row-1">
+											            <div class="upload-file-container">
+											                <img id="preview_images" src="#" alt="" />
+											             </div>  
+											        </div>
+											    </td>
+											    <td>
+											         <div class="input-file-row-1">
+											            <div class="upload-file-container">
+											                <img id="preview_images" src="#" alt="" />
+											             </div>  
+											        </div>
+											    </td>
+											  </tr>
+											</table>	
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Product Detail: </label>
+
+										<div class="col-sm-9" style="overflow-x: auto;">
+											<textarea rows="25" cols="90" id="form-field-1" style="color: #737375	!important;background-color: white!important;border:1px solid #ccc8c8;"  disabled>Samsung mobile phone with 64 storage and 4 gb ram viewing pictures and watching videos become enjoyable on the C2’s 15.5-cm (6.1) display. While the curved boundaries at the dewdrop area add to the beauty of the screen, the C2’s 19.5:9 aspect ratio and the 89.35% screen-to-body ratio provide a truly immersive visual experience.
+
+Dewdrop Full Screen
+Viewing pictures and watching videos become enjoyable on the C2’s 15.5-cm (6.1) display. While the curved boundaries at the dewdrop area add to the beauty of the screen, the C2’s 19.5:9 aspect ratio and the 89.35% screen-to-body ratio provide a truly immersive visual experience.
+
+
+Massive 4000 mAh Battery
+Forget about charging your phone frequently during the day as the C2 comes with a massive 4000 mAh battery. The MediaTek CorePilot Technology, along with a 12nm efficient processor, balances the load effortlessly.
+
+
+13 MP + 2 MP AI Dual Camera
+The C2’s AI-powered dual camera setup, which comes with Chroma Boost, helps you take perfectly balanced pictures. You can take stunning portrait shots easily with the Bokeh effect. It also comes with other features such as HDR, Beautification, 1080p video recording and Slo-Mo Video.
+
+
+Powerful Performance
+Powered by a 2.0 GHz MediaTek Helio P22 octa-core processor and 2 GB of RAM, the C2 ensures a smooth and reliable experience. Baked in the TSMC 12nm FinFET process, its octa-core CPU and IMG PowerVR GE8320 GPU let you run all your apps and games seamlessly. It also comes with 32 GB of internal memory, allowing you to store your pictures, videos, and other files with ease.
+
+
+ColorOS 6.0 (Based on Android 9.0)
+Featuring a neat, borderless design and amazing features, the ColorOS 6.0 provides an easy and convenient way to do your daily operations. You can smoothly change tasks using Gesture Navigation and freely organise your apps using the APP Drawer Launcher.
+
+
+AI Facial Unlock
+Unlocking your phone is made more easy and secure. The C2’s Facial Unlock feature processes 128 identification points in just 0.3 seconds. It also comes with the Smart Lock feature which makes accessing your phone more convenient.
+
+
+Convenient Storage Options
+It comes with 2 SIM card slots and a dedicated micro SD card support for expansion up to 256 GB.
+
+
+Durable Build
+Having undergone about 10000 drop tests, 10000 USB tests and 10000 button tests, the C2 is built to last. It comes with the sturdy Corning Gorilla Glass and is also splash- and sweat-proof.
+
+
+Google Assistant
+You can multitask seamlessly anywhere and anytime by using Google Assistant on this phone. You can use your voice to ask answers for your queries. You can also ask it to play music, and help you to navigate, and more. You can activate it by saying “OK Google” or by long-pressing the home button. It is available in Hindi, English and eight other languages.
+
+
+
+
+											</textarea>
+										</div>
+									</div>	
+
+										<div class="col-md-offset-3 col-md-9">
+											<button class="btn btn-info" type="submit">
+												<i class="ace-icon fa fa-check bigger-110"></i>
+												Change
+											</button>
+										</div>
+										</form>
+
+								<!-- PAGE CONTENT ENDS -->
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</div><!-- /.page-content -->
+				</div>
+			</div><!-- /.main-content -->
+{% endblock %}

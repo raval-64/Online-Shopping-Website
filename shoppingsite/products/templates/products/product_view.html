@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% block body %}
+    {% load static %}
+<br>
+
+<div class="header-container prodlist_no" style="padding:15px;">
+	<div class="gl-container">
+		<div class="gl-container-row">
+            {% for p in pg %}
+			    <div class="gl-container-cln" align="center" onmouseenter="showimg(this)"><img src="{{ p.gallery_name.url }}" class="gl-img" ></div>
+            {% endfor %}
+				</div>
+		<div class="gl-container-row" align="center" style="height:485px;width:40%;padding:40px;margin:4px;box-shadow:0 0px 4px 0 rgba(0,0,0,0.16),0 0px 2px 0 rgba(0,0,0,0.12)!important;">
+			{% if product_name.product_quantity == 0 %}
+				<img src="" class="gl-img-main" id="main-img" style="opacity:0.2">
+				<div style="position:absolute;top: 240px;left:0;right:0;bottom:0;font-size: 24px;opacity: 1;margin:auto;color: #d70707;">Out Of Stock</div>
+			{% else %}
+				<img src="" class="gl-img-main" id="main-img">
+			{% endif %}
+
+		</div>
+		<div class="gl-container-row" style="height:500px;width:53%;padding:10px;padding-left:50px;">
+			<div class="gl-container-row-title">{{ product_name.product_name }}</div>
+			<div class="gl-container-row-brand_name" style="padding-top:0;margin-top:-9px;text-transform:capitalize;"><span class="dark-font">Home / {{ product_type.product_type_name }} /</span></div>
+			<div class="gl-container-row-brand_name" style="font-size:17px;text-transform:uppercase;"><span class="dark-font" style="text-transform:capitalize;">Brand Name</span>: {{ product_name.product_brand }}</div>
+			<div class="gl-container-row-price"  style="font-size:17px;"><span class="dark-font">Payment </span>: Cash on Delivery/Net Banking/Debit card/Credit card</div>
+			<div class="gl-container-row-price"  style="font-size:17px;"><span class="dark-font">Product Price </span>: Rs.{{ product_name.product_price|floatformat:'2' }}</div>
+			<div class="gl-container-row-price"  style="font-size:17px;padding-bottom:40px;"><span class="dark-font"> Seller </span>:
+			{{ product_name.seller_id.seller_shop_name }} </div>
+			<div class="gl-button-ct">
+				{% if product_name.product_quantity == 0 %}
+					<div class="gl-button-ct-in"><button type="button" class="ct-in-bt" style="background-color:orange;">Out Of Stock</button></div>
+				{% else %}
+					<div class="gl-button-ct-in"><a href="{% url 'cart:link_cart' product_name.product_name %}" style="text-decoration: none;color: black;"><button type="button" class="ct-in-bt">Add To Cart</button></a></div>
+					<div class="gl-button-ct-in"><a href="{% url 'order:order_buy' product_name.product_name %}" style="text-decoration: none;color: black;"><button type="button" class="ct-in-bt">Buy Now</button></a></div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</div>
+<br>
+<div class="header-container prod-discribe-contain">
+	<div class="prod-desc-head" style="padding: 24px!important;font-family: 'Yeseva One',CURSIVE!important;font-size: 22px;">Product Description</div>
+		<div class="prod-desc-contain" style="font-family: 'Philosopher', sans-serif;font-size: 17px;white-space: pre-line;">
+            {{ product_name.product_desc }}
+        </div>
+</div>
+<br>
+<br>
+
+<div class="p_slider_container">
+	<div class="p_slider_container_inner">
+	<div class="slide_title">
+		<div class="slide_title_in">Similar Products</div>
+	</div>
+	<div class="prev_slide" id="prev">
+	<button type="button" class="bt_p_slide" id="prev_bt"><i class="icon left"></i></button>
+	</div>
+	<div id="p_slider">
+		<ul id="p_slides">
+            {% for pro in pr %}
+                <a href="{% url 'products:product_detail' pro.product_type_id pro.product_name %}" style="text-decoration: none;color: black;">
+			    <li class="p_slide">
+				    <table border="0" class="tbl_info_produ">
+					    <tr>
+                            {% for pg in pro.product_gallery_set.all|slice:":1" %}
+						    <td class="td_img"><img src="{{ pg.gallery_name.url }}" class="l_img_con" align="center"></td>
+                            {% endfor %}
+					    </tr>
+					    <tr>
+						    <td align="center" class="pr_title_con">{{ pro.product_name }}</td>
+					    </tr>
+					    <tr>
+						    <td align="center" class="pr_price_con"> Rs.{{ pro.product_price }}</td>
+					    </tr>
+				    </table>
+			    </li>
+                </a>
+            {% endfor %}
+        </ul>
+	</div>
+	<div class="next_slide" id="next">
+		 <button type="button" class="bt_p_slide" id="next_bt"><i class="icon right"></i></button>
+ </div>
+</div>
+<br>
+<br>
+
+<br>
+<script>
+var sou= document.getElementsByClassName("gl-img")[0].src;
+var set_img=document.getElementById('main-img');
+set_img.src=sou;
+ var showimg = function(param) {
+     	var get_img=param.firstElementChild.src;
+		var set_img=document.getElementById('main-img');
+		set_img.src=get_img;
+	 }
+</script>
+{% endblock %}
