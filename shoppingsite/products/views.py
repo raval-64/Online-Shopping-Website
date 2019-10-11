@@ -24,7 +24,7 @@ def product_view_listbybrand(request, product_brand_name):
     request.session.modified = True
     try:
         product_type_id = product.objects.filter(product_brand=product_brand_name)
-        return render(request, 'products/prodlist.html', {'product_type': product_type_id, 'product_gallery': product_gallery})
+        return render(request, 'products/prodlist.html', {'product_type': product_type_id, 'product_gallery': product_gallery,'name':product_brand_name})
     except product.DoesNotExist:
         return redirect('/')
 

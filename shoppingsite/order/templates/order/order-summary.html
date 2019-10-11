@@ -10,8 +10,8 @@
 			{% for order in orders %}
 			{% if order.pk == lists %}
 			<div class="cart-info-ctn">
-				<div class="main-cart-box">
-					<table class="summary-report">
+				<div class="main-cart-box" style="border-bottom: none;">
+					<table class="summary-report" style="padding:25px;box-shadow: 0 0px 2px 0 rgba(0,0,0,0.16),0 0px 2px 0 rgba(0,0,0,0.12)!important;">
 						<tr clas	s="tr-report">
 							<td class="td-report" style="width:38%;">Product Name : {{ order.order_product_id.product_name }}</td>
 							<td class="td-report" style="text-transform:capitalize;">Name : {{ order.order_address_id.name }}</td>
@@ -58,7 +58,7 @@
 				</table>
 			</div>
 			<div class="cart-header-ctn">
-				<a href="{% url 'osm:index_main' %}">
+				<a href="{% url 'products:index' %}">
 				<button type="button" class="shop-bt" >Continue Shopping</button>
 				</a>
 			</div>

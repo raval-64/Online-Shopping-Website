@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login
 from .models import address_info, order, order_info
 from datetime import datetime, timedelta, date
 from products.models import product
-from .forms import AddressForm
+from .forms import AddressForm, ProcessForm
 from cart.models import cart
 
 # Create your views here.
@@ -19,7 +19,7 @@ def order_buy(request, product_names):
         request.session['product_lists'] = list
         request.session['product_qun'] = [1]
         print(list)
-    return redirect('order:fill_address')
+    return redirect('order:fill_process')
 
 
 @login_required(login_url="/login_user/")
@@ -43,6 +43,27 @@ def fill_address(request):
             context = {'add_form': form}
             return render(request, 'order/address.html', context)
 
+@login_required(login_url="/login_user/")
+def fill_process(request):
+    if 'product_lists' not in request.session:
+        return redirect('/')
+    else:
+        form = ProcessForm(request.POST or None)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            mobile = form.cleaned_data['mobile_no']
+            pincode = form.cleaned_data['pincode']
+            address = form.cleaned_data['address']
+            city = form.cleaned_data['city']
+            state = form.cleaned_data['state']
+            pay = form.cleaned_data['pay']
+            form.save(commit=False)
+            form_data = [name, mobile, pincode, address, city, state, pay]
+            request.session['form'] = form_data
+            return redirect('order:order_summary')
+        else:
+            context = {'form': ProcessForm}
+            return render(request, 'order/process.html',context)
 
 @login_required(login_url="/login_user/")
 def payment_method(request):
@@ -76,7 +97,7 @@ def order_summary(request):
         pr_qun = list(pr_qun)
         form = request.session['form']
         add_form = address_info(name=form[0], mobile_no=form[1], pincode=form[2], address=form[3], city=form[4], state=form[5])
-        pay = request.session['payment']
+        pay = form[6]
         id = []
         for pr, quantitys in zip(products, pr_qun):
             prod = product.objects.get(product_name=pr)

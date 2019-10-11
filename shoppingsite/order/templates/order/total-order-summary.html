@@ -9,9 +9,9 @@
 			<div class="cart-header-ctn">My Orders List</div>
 			{% for order in orders %}
 			<div class="cart-info-ctn">
-				<div class="main-cart-box">
-					<table class="summary-report">
-						<tr clas	s="tr-report">
+				<div class="main-cart-box" style="border-bottom:none;">
+					<table class="summary-report" style="padding:25px;box-shadow: 0 0px 2px 0 rgba(0,0,0,0.16),0 0px 2px 0 rgba(0,0,0,0.12)!important;">
+						<tr class="tr-report">
 							<td class="td-report" style="width:38%;">Product Name : {{ order.order_product_id.product_name }}</td>
 							<td class="td-report" style="text-transform:capitalize;">Name : {{ order.order_address_id.name }}</td>
 							<td class="td-report">Order ID : 000{{ order.pk }}</td>
