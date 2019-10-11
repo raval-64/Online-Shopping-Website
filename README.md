@@ -2,23 +2,7 @@
 
 The online shopping mall is an e-commerce website developed in the django framework. HTML, CSS and Javascript are used for this project.
 
- <br>
-  <h3> Set Database in this file 'Online-Shopping-Website/shop/shop/settings.py'</h3>
-  
-  <h4> For Mysql</h4>
-  <br>
-  
-  DATABASES = {<br>
-    &nbsp;&nbsp;&nbsp;'default': {<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'ENGINE': 'django.db.backends.mysql',<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'NAME': 'db_django_osm',<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'USER': 'root',<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'PASSWORD': '*******',<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'HOST': 'localhost',<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'PORT': '3306',<br>
-    &nbsp;&nbsp;&nbsp;}<br>
-}<br>
-<br>
+
 <h3> Images Of Project </h3>
   
   <h4>1. Home Page</h4><br>
