@@ -99,9 +99,9 @@ def order_summary(request):
         add_form = address_info(name=form[0], mobile_no=form[1], pincode=form[2], address=form[3], city=form[4], state=form[5])
         pay = form[6]
         id = []
-        for pr, quantitys in zip(products, pr_qun):
+        for pr, quantities in zip(products, pr_qun):
             prod = product.objects.get(product_name=pr)
-            quan = quantitys
+            quan = quantities
             prods = prod.product_quantity
             prods -= 1
             prod.product_quantity = prods

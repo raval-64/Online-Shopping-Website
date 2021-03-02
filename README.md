@@ -7,8 +7,8 @@ The online shopping mall is an e-commerce website developed in the django framew
   
 +   Create .env file in shoppingsite.
     
-    - make copy of env with rename .env.
-    - add env variable values.
+    - make copy of env.sample with rename .env
+    - then add env variable values.
 
 +   Create python virtual environment in movie_api.
     

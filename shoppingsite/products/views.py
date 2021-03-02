@@ -20,7 +20,7 @@ def product_view_detail(request, product_types, product_name):
     return render(request, 'products/product_view.html', sender)
 
 
-def product_view_listbybrand(request, product_brand_name):
+def product_view_list_by_brand(request, product_brand_name):
     request.session.modified = True
     try:
         product_type_id = product.objects.filter(product_brand=product_brand_name)
@@ -29,22 +29,22 @@ def product_view_listbybrand(request, product_brand_name):
         return redirect('/')
 
 
-def product_view_list(request, product_type_names, product_categorys):
+def product_view_list(request, product_type_names, product_categories):
     request.session.modified = True
-    product_cate = get_object_or_404(product_category, product_category_name=product_categorys)
+    product_cate = get_object_or_404(product_category, product_category_name=product_categories)
     product_type_id = get_object_or_404(product_type, product_type_name=product_type_names, product_category_id=product_cate)
     return render(request, 'products/fil&search.html', {'product_type': product_type_id, 'product_gallery': product_gallery})
 
 
 def search(request):
     request.session.modified = True
-    prodt = product.objects.all()
+    products = product.objects.all()
     query = request.GET.get("q")
     if query:
-        prod = prodt.distinct()\
+        prod = products.distinct()\
                     .filter(Q(product_name__icontains=query) | Q(product_brand__icontains=query))
         return render(request, 'products/prodlist.html', {'product_type': prod, 'product_gallery': product_gallery})
     else:
-        return render(request, 'products/prodlist.html', {'product_type': prodt})
+        return render(request, 'products/prodlist.html', {'product_type': products})
 
 
