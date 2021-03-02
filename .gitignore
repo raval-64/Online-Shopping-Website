@@ -1,0 +1,5 @@
+.myenv
+.venv
+*.pyc
+shoppingsite/.venv
+shoppingsite/.env
