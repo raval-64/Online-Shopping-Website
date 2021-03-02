@@ -15,3 +15,6 @@ The online shopping mall is an e-commerce website developed in the django framew
     - `python -m venv .venv`
     - `source .venv/bin/activate`
     - `pip install -r requirements.txt`
+
++ Run Project
+  - `python manage.py runserver`
