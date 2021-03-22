@@ -1,5 +1,3 @@
-.myenv
-.venv
 *.pyc
-.*
-!/.gitignore
+shoppingsite/.venv
+shoppingsite/.env
